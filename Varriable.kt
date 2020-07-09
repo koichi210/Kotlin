@@ -1,4 +1,3 @@
-
 fun main(args: Array<String>) {
     val a: String = "Kotlin"
     val b = "KOTLIN"
@@ -6,4 +5,7 @@ fun main(args: Array<String>) {
     val d: String? = null   // Can be declared by adding "?"
 
     printIn(b)
+
+    val name = "Juliet" 
+    println("Hello, ${name}")
 }
