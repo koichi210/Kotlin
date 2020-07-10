@@ -6,4 +6,10 @@ fun main(args: Array<String>) {
     }else{
         println("No Arrgument")
     }
+
+    var value:Int = 10
+    while(value != 0){
+        println("${value}")
+        value--
+    }
 }
