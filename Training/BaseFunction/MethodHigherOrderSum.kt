@@ -11,7 +11,9 @@ fun apply(n: Int, f: (Int, Int) -> Int): Int {
   println("${m} + " + n)    // OK
   println("${m} + ${n}")    // OK
   //println(n + " + ${m} ") // NG
-  // println(m + " + " + n) // NG
+  //println(m + " + " + n) // NG
+  println(n.toString() + " + ${m} ") // OK
+  println(m.toString() + " + " + n) // OK
   val r = f(m, n)
   return r
 }
