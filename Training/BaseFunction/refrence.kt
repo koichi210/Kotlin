@@ -21,14 +21,14 @@ fun localDefine()
     val a: Int = 1
     print(a)
 
-    val b = 1     // `Int`型が推論
+    val b = 1   // `Int`型が推論
     print(b)
 
-    val c: Int    // 初期値が与えられない場合、型指定が必要
-    c = 1             // 明確な代入
+    val c: Int  // 初期値が与えられない場合、型指定が必要
+    c = 1       // 明確な代入
     print(c)
 
-    var x = 5 // `Int`型が推論される
+    var x = 5   // `Int`型が推論される
     x += 1
     print(x)
 }
@@ -47,20 +47,20 @@ fun getStringLength(obj: Any): Int? {
 // 条件分岐
 fun caseDescription(obj: Any) {
     when (obj) {
-        1                    -> print("One")
-        "Hello"        -> print("Greeting")
-        is Long        -> print("Long")
+        1          -> print("One")
+        "Hello"    -> print("Greeting")
+        is Long    -> print("Long")
         !is String -> print("Not a string")
-        else             -> print("Unknown")
+        else       -> print("Unknown")
     }
 
     var param = 2
     val paramStr = if (param == 1) {
-            "one"
+        "one"
     } else if (param == 2) {
-            "two"
+        "two"
     } else {
-            "three"
+        "three"
     }
     print(paramStr)
 }
@@ -84,9 +84,9 @@ fun getmap(){
 
 fun tryCatch(){
     val result = try {
-            println("try catch test")
+        println("try catch test")
     } catch (e: ArithmeticException) {
-            throw IllegalStateException(e)
+        throw IllegalStateException(e)
     }
     println(result)
 }
@@ -100,22 +100,52 @@ fun printLog(){
 }
 
 class Turtle {
-        fun penDown(){}
-        fun penUp(){}
-        fun turn(degrees: Double){print(degrees)}
-        fun forward(pixels: Double){print(pixels)}
+    fun penDown(){}
+    fun penUp(){}
+    fun turn(degrees: Double){print(degrees)}
+    fun forward(pixels: Double){print(pixels)}
 }
 fun withDescription(){
     val myTurtle = Turtle()
     with(myTurtle) { // 100pxの四角形を描く
-            penDown()
-            for(i in 1..4) {
-                    forward(100.0)
-                    turn(90.0)
-            }
-            penUp()
+        penDown()
+        for(i in 1..4) {
+            forward(100.0)
+            turn(90.0)
+        }
+        penUp()
     }
 }
+
+fun TypeDescription(){
+    val d: Double	// 64bit
+    val f: Float	// 32bit
+    val l: Long 	// 64bit
+    val i: Int	    // 32bit
+    val s: Short	// 16bit
+    val b: Byte	    // 8bit
+
+    d = 1.0
+    f = 2.0F
+    l = 1L
+    i = 2
+    s = 3
+    b = 4
+    print(d.toString() + f.toString() + l.toString() + i.toString() + s.toString() + b.toString() )
+
+    //val ii: Int? = 1
+    //val ll: Long? = ii // 暗黙の変換
+    //print(ii == ll)   // 値は同一でも型が違うので、falseになる
+    //print(ii == ll.toInt())   // 型を合わせれば、trueになる
+}
+
+fun ArrayDescription()
+{
+    val ary = Array(5, { i -> (i * i).toString() })
+    for(i in ary)
+        print(" " + i)
+}
+
 
 fun main(args: Array<String>) {
     val message = "Hello, world!" 
@@ -138,4 +168,5 @@ fun main(args: Array<String>) {
     for (l in 1..10) {
         print(" " + l)
     }
+    println()
 }
