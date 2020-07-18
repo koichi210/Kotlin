@@ -8,6 +8,26 @@ fun breakDescription(){
     }
 }
 
+fun whileLoop(){
+    var a:Int = 1
+    val b:Int = 5
+
+    while(a <= b) {
+        println("${a} * ${b} = ${a*b}")
+        a++
+    }
+}
+
+fun doWhileLoop(){
+    var c:Int = 10
+    val d:Int = 6
+
+    do {
+        println("${c} * ${d} = ${c*d}")
+        c++
+    }while(c <= d)
+}
+
 fun main(args: Array<String>) {
     if (args.isNotEmpty()) {
         for (name in args) {
@@ -24,4 +44,7 @@ fun main(args: Array<String>) {
     }
 
     breakDescription()
+
+    whileLoop()
+    doWhileLoop()
 }

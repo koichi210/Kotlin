@@ -16,8 +16,7 @@ fun printSum2(a: Int, b: Int) {
     print(a + b)
 }
 
-fun localDefine()
-{
+fun localDefine(){
     val a: Int = 1
     print(a)
 
@@ -63,12 +62,34 @@ fun caseDescription(obj: Any) {
         "three"
     }
     print(paramStr)
+
+    val a = 100
+    val b = 200
+    if ( a == 100 && b ==100){
+        println("aとbは100です")
+    }
 }
 
-fun range(x: Int, y:Int){
-    // xが 1～y-1 までの範囲にあるかチェック
-    if (x in 1..y-1)
+fun range(x: Int){
+    // xが 1～10 までの範囲にあるかチェック
+    if (x in 1..10)
         print("OK")
+
+
+    // 3～50の範囲
+    val rangenumber:IntRange = 3..50
+    println(rangenumber)
+
+    // 数値が範囲内にあるか判定
+    val number : Int = 20
+    val flg1 = number in rangenumber
+    println(flg1)
+
+    // 文字がが範囲内にあるか判定
+    val ch: Char = 'c'
+    val rangechar: CharRange = 'b'..'h'
+    val flg2 = ch in rangechar
+    println(flg2)
 }
 
 fun method(a: Int = 0, b: String = ""){
@@ -89,6 +110,14 @@ fun tryCatch(){
         throw IllegalStateException(e)
     }
     println(result)
+
+    val message: String = "Hello!"
+    try {
+        val a: Int = message.toInt()
+        println("number = ${a}")
+    } catch (e: NumberFormatException) {
+        println("[${message}] is not IntType")
+    }
 }
 
 fun printLog(){
@@ -110,6 +139,7 @@ fun withDescription(){
     with(myTurtle) { // 100pxの四角形を描く
         penDown()
         for(i in 1..4) {
+            println(i)
             forward(100.0)
             turn(90.0)
         }
@@ -139,13 +169,29 @@ fun TypeDescription(){
     //print(ii == ll.toInt())   // 型を合わせれば、trueになる
 }
 
-fun ArrayDescription()
-{
+fun ArrayDescription(){
     val ary = Array(5, { i -> (i * i).toString() })
     for(i in ary)
         print(" " + i)
 }
 
+fun PrintDescription(){
+    /// ダブルクォートを3つ記述
+    val multiline:String = """
+        |Hello!
+        |A-sam
+        """
+    println(multiline)
+
+    println("hello ")
+    println("world")
+
+    print("hello \n")
+    print("world \n")
+
+    print("hello ")
+    print("world")
+}
 
 fun main(args: Array<String>) {
     val message = "Hello, world!" 
@@ -169,4 +215,20 @@ fun main(args: Array<String>) {
         print(" " + l)
     }
     println()
+
+    // ループ5
+    for (l in 0..100 step 10) {
+        print(" " + l)
+    }
+    println()
+
+    // ループ6
+    for (l in 100 downTo 90) {
+        print(" " + l)
+    }
+    println()
+
+    PrintDescription()
+
+    tryCatch()
 }
