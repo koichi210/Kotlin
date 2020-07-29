@@ -5,16 +5,15 @@ class TableMan {
         const val Empty:Int = 0
         const val Black:Int = 1
         const val White:Int = 2
+        const val Blue:Int = 3  // 置ける場所のガイド用
     }
 
-    private var cellXnum:Int = 8  // X方向のマス数
-    private var cellYnum:Int = 8  // Y方向のマス数
-
-    // 次の手番
-    public var nextTurn:Int = Black
+    private var cellXnum:Int = 8    // X方向のマス数
+    private var cellYnum:Int = 8    // Y方向のマス数
 
     // 盤面
     public var board = Array(cellXnum) { IntArray(cellYnum){Empty} }
+        private set
 
     public fun Initialize( cellXnum:Int = 8, cellYnum:Int = 8 ){
         // 盤面のサイズ決定
@@ -23,7 +22,9 @@ class TableMan {
 
         // 盤面の初期化
         this.board = Array(cellXnum) {IntArray(cellYnum){Empty}}
+    }
 
+    public fun InitialPlacement() {
         // 初期配置
         PutStone(3, 3, Black)
         PutStone(3, 4, White)
@@ -31,27 +32,21 @@ class TableMan {
         PutStone(4, 4, Black)
     }
 
+    public fun CountStone(color:Int):Int{
+        var StoneNum = 0
 
-    // public fun <T> SetBoard(vararg board:T){
-    //    this.board = board
-    // }
+        for (i in 0..7) {
+            for (j in 0..7) {
+                if ( board[i][j] == color ){
+                    println("${i} ${j} ${color}")
+                    StoneNum ++
+                }
+            }
+        }
+        return StoneNum
+    }
 
-    // public fun <T> GetBoard(): Array<T>
-    // public fun GetBoard():Array{
-    //    return board
-    // }
-
-    // 次の手番を設定
-    // public fun SetNextTurn( nextTurn:Int ){
-    //     this.nextTurn = nextTurn
-    // }
-
-    // // 次の手番を取得
-    // public fun GetNextTurn():Int{
-    //     return this.nextTurn
-    // }
-
-    // オプション機能：任意の場所に石を置く
+    // 色指定で石を置く
     public fun PutStone( cellX:Int, cellY:Int, color:Int ):Boolean{
         if ( cellXnum <= cellX ) return false
         if ( cellYnum <= cellY ) return false
@@ -60,10 +55,12 @@ class TableMan {
         return true
     }
 
+    // 白石を置く
     public fun PutStoneWhite( cellX:Int, cellY:Int ):Boolean{
         return PutStone(cellX, cellY, White)
     }
 
+    // 黒石を置く
     public fun PutStoneBlack( cellX:Int, cellY:Int ):Boolean{
         return PutStone(cellX, cellY, Black)
     }
@@ -76,8 +73,10 @@ class TableMan {
             }
             print("\n")
         }
+        print("\n")
     }
 }
+
 
 fun main(args: Array<String>) {
     val tb = TableMan()
@@ -96,4 +95,10 @@ fun main(args: Array<String>) {
     flag = tb.PutStoneWhite(5, 5)
 
     tb.ExportBoard()
+    tb.board[2][3] = TableMan.White
+    tb.ExportBoard()
+
+    tb.blackStoneNum = tb.CountStone(TableMan.Black)
+    tb.whiteStoneNum = tb.CountStone(TableMan.White)
+   println("black=${tb.blackStoneNum} white=${tb.whiteStoneNum}")
 }
